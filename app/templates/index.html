@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <form action="/results" method="get">
+    <form action="/results" method="post">
         <div id="from"> From: 
-            <input id="lat" type="number">
-            <input id="long" type="number">
+            {{ form.from_lat }}
+            {{ form.from_long }}
         </div>
         <div id="to"> To:
-            <input id="lat" type="number">
-            <input id="long" type="number">
+            {{ form.to_lat }}
+            {{ form.to_long }}
         </div>
         <button type="submit">Compare your Fare</button>
     </form>

@@ -5,21 +5,44 @@ Created on Sat Oct 28 13:19:08 2017
 
 @author: beaubritain
 """
-from flask import render_template
-from app import app
+from flask import render_template, redirect
+from flask_wtf import FlaskForm
+from wtforms import DecimalField
+from wtforms.validators import DataRequired
+from app import app, queries
+
+sql_engine = queries.get_engine()
+
+class LocationForm(FlaskForm):
+    from_lat = DecimalField('from_lat', places=4, validators=[DataRequired()])
+    from_long = DecimalField('from_long', places=4, validators=[DataRequired()])
+    to_lat = DecimalField('to_lat', places=4, validators=[DataRequired()])
+    to_long = DecimalField('to_long', places=4, validators=[DataRequired()])
 
 @app.route('/')
 @app.route('/index')
 def index():
+    form = LocationForm(csrf=False)
     return render_template('index.html',
-                           title='Home')
+                           title='Home', form=form)
 
-@app.route('/results')
+@app.route('/results', methods=['GET', 'POST'])
 def results():
+    form = LocationForm(csrf=False)
+    if not form.validate_on_submit():
+        # maybe flash a message
+        return redirect('/')
+    sql_connection = sql_engine.connect()
+    result = sql_connection.execute(queries.generate_comparables_query(form.from_lat.data, 
+                                                                       form.from_long.data, 
+                                                                       form.to_lat.data, 
+                                                                       form.to_long.data))
+    estimated_fare, estimated_tip = result.fetchone()
+    result.close()
     return render_template('results.html',
                            title='Results', 
-                           estimated_fare=12.34, 
-                           estimated_tip=4.20)    
+                           estimated_fare=estimated_fare, 
+                           estimated_tip=estimated_tip)    
 
 # remove this when we deploy on apache, and route the static content separately
 @app.route('/static/<path:path>')
