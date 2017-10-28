@@ -5,7 +5,6 @@ Created on Sat Oct 28 13:19:08 2017
 
 @author: beaubritain
 """
-
 from flask import render_template
 from app import app
 
