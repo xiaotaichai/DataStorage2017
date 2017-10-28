@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    background: bisque;
+    padding: 1% 0;
+    margin: 0 10%;
+}
+
+#content {
+    margin: 0 10%;
+    padding: 10px 10%;
+    background: chartreuse;
+}

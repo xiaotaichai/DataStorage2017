@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>FareFinder</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/farefinder.css">
-</head>
-<body>
-    <header>
-        <h1> 🚕 FareFinder: Find a comparable taxi fare </h1>
-    </header>
-    <form action="/results.html" method="get">
+{% extends "base.html" %}
+{% block content %}
+    <form action="/results" method="get">
         <div id="from"> From: 
             <input id="lat" type="number">
             <input id="long" type="number">
@@ -20,5 +11,4 @@
         </div>
         <button type="submit">Compare your Fare</button>
     </form>
-</body>
-</html>
+{% endblock %}

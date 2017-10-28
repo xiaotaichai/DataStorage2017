@@ -11,16 +11,17 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'nickname': 'Miguel'}  # fake user
     return render_template('index.html',
-                           title='Home',
-                           user=user)
+                           title='Home')
 
 @app.route('/results')
 def results():
-    user = {'nickname': 'Miguel'}  # fake user
     return render_template('results.html',
-                           title='Home',
-                           user=user)    
+                           title='Results', 
+                           estimated_fare=12.34, 
+                           estimated_tip=4.20)    
 
-
+# remove this when we deploy on apache, and route the static content separately
+@app.route('/static/<path:path>')
+def static_content(path):
+    return send_from_directory('static', path)
