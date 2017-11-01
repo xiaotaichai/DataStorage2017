@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
     <form action="/results" method="post">
-        <div id="from"> From: 
+        <div id="from" class="coords"> From: 
             {{ form.from_lat }}
             {{ form.from_long }}
+            <button class="randomize" type="button">Randomize!</button>
         </div>
-        <div id="to"> To:
+        <div id="to" class="coords"> To:
             {{ form.to_lat }}
             {{ form.to_long }}
+            <button class="randomize" type="button">Randomize!</button>
         </div>
         <button type="submit">Compare your Fare</button>
     </form>
+    <script src="/static/js/randomize_locations.js"></script>
 {% endblock %}

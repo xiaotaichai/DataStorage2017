@@ -14,3 +14,7 @@ header {
     padding: 10px 10%;
     background: chartreuse;
 }
+
+.randomize {
+    display: none;
+}
