@@ -11,6 +11,8 @@ from wtforms import DecimalField
 from wtforms.validators import DataRequired
 from app import app, queries
 
+from secrets import maps_api_key
+
 sql_engine = queries.get_engine()
 
 create_render_kw = lambda coordinate: {"placeholder": coordinate, "class": "form-control", "type": "number", "step": "any"}
@@ -48,7 +50,8 @@ def results():
                            estimated_fare=estimated_fare, 
                            estimated_tip=estimated_tip, 
                            origin="{0},{1}".format(form.from_lat.data, form.from_long.data),
-                           destination="{0},{1}".format(form.to_lat.data, form.to_long.data))    
+                           destination="{0},{1}".format(form.to_lat.data, form.to_long.data),
+                           maps_api_key=maps_api_key)    
 
 # remove this when we deploy on apache, and route the static content separately
 @app.route('/static/<path:path>')
