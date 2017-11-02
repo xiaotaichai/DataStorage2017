@@ -18,3 +18,7 @@ header {
 .randomize {
     display: none;
 }
+
+.google-maps iframe {
+    width: 100% !important;
+}
