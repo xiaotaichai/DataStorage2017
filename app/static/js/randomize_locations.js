@@ -44,7 +44,7 @@ function activateRandomize(button){
 function createGoogleMapsLink(div){
     const mapsLink = document.createElement('a');
     mapsLink.className = "btn btn-info"
-    mapsLink.innerText = "See location in Google Maps";
+    mapsLink.innerText = "See in Google Maps";
     mapsLink.href = "#"
     const latlongs = div.getElementsByTagName("input")
     for (var i = 0; i < latlongs.length; i++) {

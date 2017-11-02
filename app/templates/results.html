@@ -1,8 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-    <div id="results">
-        <h2>Your estimated cab fare from Lorem Ipsum Heights to Dolor Sit Amet:</h2>
-        <div id="fare">Estimated Fare: {{"${:,.2f}".format(estimated_fare)}}</div>
-        <div id="tip">Estimated Tip: {{"${:,.2f}".format(estimated_tip)}}</div>
+    <div id="results" class="card">
+        <div class="card-body">
+            <h2 class="card-title">Your estimated cab fare:</h2>
+            <div class="card-text">
+                <div id="fare">
+                    <strong>Estimated Fare:</strong>
+                    {{"${:,.2f}".format(estimated_fare)}}
+                </div>
+                <div id="tip">
+                    <strong>Estimated Tip:</strong>
+                    {{"${:,.2f}".format(estimated_tip)}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <!-- <img class="img-fluid" src="http://www.billboard.com/files/media/romeo-santos-2017-cr-jack-guy-billboard-1548.jpg" alt="Bachata Heartthrob Romeo Santos"> -->
+        <iframe width="600" height="450" frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/directions?origin={{origin}}&destination={{destination}}&key=AIzaSyDPdkCaCsPip17UPs3PhAnsPuUvJLwSo40" allowfullscreen></iframe>
     </div>
 {% endblock %}

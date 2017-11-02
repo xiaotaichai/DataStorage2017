@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
     <form action="/results" method="post" class="container">
-        <div id="from" class="location form-row"> 
+        <div id="from" class="location form-group"> 
+            <div class="form-row">
             <h3 class="col">From:</h3> 
             <div class="coords form-group">
                 <div class="col">
@@ -16,22 +17,29 @@
             </div>
             <div class="google-link col"></div>
         </div>
-        <div id="to" class="location form-row"> 
-            <h3 class="col">To:</h3>
-            <div class="coords form-group">
-                <div class="col">
-                    {{ form.to_lat }}
-                </div>
-                <div class="col">
-                    {{ form.to_long }}
-                </div>
-            </div>
-            <div class="col">
-                <button class="to randomize btn btn-secondary" type="button">Randomize!</button>
-            </div>
-            <div class="google-link col"></div>
         </div>
-        <button type="submit" class="btn btn-primary">Compare your Fare</button>
+        <div id="to" class="location form-group">
+            <div class="form-row"> 
+                <h3 class="col">To:</h3>
+                <div class="coords form-group">
+                    <div class="col">
+                        {{ form.to_lat }}
+                    </div>
+                    <div class="col">
+                        {{ form.to_long }}
+                    </div>
+                </div>
+                <div class="col">
+                    <button class="to randomize btn btn-secondary" type="button">Randomize!</button>
+                </div>
+                <div class="google-link col"></div>
+            </div>
+        </div>
+        <div class="form-row">
+            <button type="submit" class="btn btn-primary">
+                Compare your Fare
+            </button>
+        </div>
     </form>
     <script src="/static/js/randomize_locations.js"></script>
 {% endblock %}
