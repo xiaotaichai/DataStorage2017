@@ -14,10 +14,10 @@ from app import app, queries
 sql_engine = queries.get_engine()
 
 class LocationForm(FlaskForm):
-    from_lat = DecimalField('from_lat', places=4, validators=[DataRequired()], render_kw={"placeholder": "Latitude"})
-    from_long = DecimalField('from_long', places=4, validators=[DataRequired()], render_kw={"placeholder": "Longitude"})
-    to_lat = DecimalField('to_lat', places=4, validators=[DataRequired()], render_kw={"placeholder": "Latitude"})
-    to_long = DecimalField('to_long', places=4, validators=[DataRequired()], render_kw={"placeholder": "Longitude"})
+    from_lat = DecimalField('from_lat', places=4, validators=[DataRequired()], render_kw={"placeholder": "Latitude", "class": "form-control"})
+    from_long = DecimalField('from_long', places=4, validators=[DataRequired()], render_kw={"placeholder": "Longitude", "class": "form-control"})
+    to_lat = DecimalField('to_lat', places=4, validators=[DataRequired()], render_kw={"placeholder": "Latitude", "class": "form-control"})
+    to_long = DecimalField('to_long', places=4, validators=[DataRequired()], render_kw={"placeholder": "Longitude", "class": "form-control"})
 
 @app.route('/')
 @app.route('/index')

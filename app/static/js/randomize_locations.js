@@ -29,10 +29,13 @@ function activateRandomize(button){
     button.style.display = "inline";
     button.onclick = function(){
         const location = locations[Math.floor(Math.random()*locations.length)];
-        const coords = button.parentNode.getElementsByTagName("input")
+        const coordsSelector = `#${button.classList[0]} input`
+        const coords = document.querySelectorAll(coordsSelector);
+        //const coords = button.parentNode.getElementsByTagName(button)
         coords[0].value = location[0];
         coords[1].value = location[1];
-        const mapsLink = button.parentNode.getElementsByTagName("a")[0];
+        const mapsLinkSelector = `#${button.classList[0]} .google-link a`
+        const mapsLink = document.querySelector(mapsLinkSelector);
         mapsLink.href = `https://www.google.com/maps/place/${location[0]},${location[1]}`;
     }
 
@@ -40,21 +43,20 @@ function activateRandomize(button){
 
 function createGoogleMapsLink(div){
     const mapsLink = document.createElement('a');
+    mapsLink.className = "btn btn-info"
     mapsLink.innerText = "See location in Google Maps";
     mapsLink.href = "#"
     const latlongs = div.getElementsByTagName("input")
     for (var i = 0; i < latlongs.length; i++) {
         latlongs[i].oninput = function(){
-            console.log(mapsLink.href)
             mapsLink.href = `https://www.google.com/maps/place/${latlongs[0].value},${latlongs[1].value}`
         }
     }
-    div.appendChild(mapsLink);
-    console.log(mapsLink);
+    div.getElementsByClassName("google-link")[0].appendChild(mapsLink);
 }
 
 
-const coords = document.getElementsByClassName("coords");
+const coords = document.getElementsByClassName("location");
 for (var i = 0; i < coords.length; i++) {
     createGoogleMapsLink(coords[i]); //second console output
 }

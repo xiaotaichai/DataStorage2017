@@ -1,17 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
-    <form action="/results" method="post">
-        <div id="from" class="coords"> From: 
-            {{ form.from_lat }}
-            {{ form.from_long }}
-            <button class="randomize" type="button">Randomize!</button>
+    <form action="/results" method="post" class="container">
+        <div id="from" class="location form-row"> 
+            <h3 class="col">From:</h3> 
+            <div class="coords form-group">
+                <div class="col">
+                    {{ form.from_lat }}
+                </div>
+                <div class="col">
+                    {{ form.from_long }}
+                </div>
+            </div>
+            <div class="col">
+                <button class="from randomize btn btn-secondary" type="button">Randomize!</button>
+            </div>
+            <div class="google-link col"></div>
         </div>
-        <div id="to" class="coords"> To:
-            {{ form.to_lat }}
-            {{ form.to_long }}
-            <button class="randomize" type="button">Randomize!</button>
+        <div id="to" class="location form-row"> 
+            <h3 class="col">To:</h3>
+            <div class="coords form-group">
+                <div class="col">
+                    {{ form.to_lat }}
+                </div>
+                <div class="col">
+                    {{ form.to_long }}
+                </div>
+            </div>
+            <div class="col">
+                <button class="to randomize btn btn-secondary" type="button">Randomize!</button>
+            </div>
+            <div class="google-link col"></div>
         </div>
-        <button type="submit">Compare your Fare</button>
+        <button type="submit" class="btn btn-primary">Compare your Fare</button>
     </form>
     <script src="/static/js/randomize_locations.js"></script>
 {% endblock %}
